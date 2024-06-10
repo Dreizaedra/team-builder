@@ -34,7 +34,7 @@ symfony console doctrine:database:create --env=test
 symfony console doctrine:migrations:migrate --no-interaction --env=test
 ```
 
-Then create a `.env.test.local` file at the root of your project and put your DATABASE_URL inside and run the following command :
+Then create a `.env.test.local` file at the root of your project, put your `DATABASE_URL` inside and run the following command :
 ```bash
 php bin/phpunit
 ```
