@@ -9,9 +9,6 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 #[AsTwigComponent]
 final class Team
 {
-    /**
-     * @var string|null
-     */
     public ?string $name = null;
 
     /**
