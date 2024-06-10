@@ -20,23 +20,25 @@
             </tr>
         {% endif %}
 
-        <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Action</th>
-        </tr>
-
-        {% for player in this.players %}
+        {% if this.players | length > 0 %}
             <tr>
-                <td>{{ player.firstName }}</td>
-                <td>{{ player.lastName }}</td>
-                <td>
-                    <button class="btn btn-danger">
-                        <i class="fa fa-trash"></i>
-                    </button>
-                </td>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Action</th>
             </tr>
-        {% endfor %}
+
+            {% for player in this.players %}
+                <tr>
+                    <td>{{ player.firstName }}</td>
+                    <td>{{ player.lastName }}</td>
+                    <td>
+                        <button class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
         </tbody>
     </table>
 </div>
