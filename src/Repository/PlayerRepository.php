@@ -16,6 +16,9 @@ class PlayerRepository extends ServiceEntityRepository
         parent::__construct($registry, Player::class);
     }
 
+    /**
+     * @return array<int, Player>
+     */
     public function findWithNoTeam(): array
     {
         return $this->createQueryBuilder('p')
