@@ -12,7 +12,7 @@
                             </button>
                         </div>
                         <div class="col-6">
-                            <h3>{{ this.name }}</h3>
+                            <h3>{{ this.name | title }}</h3>
                         </div>
                         <div class="col-5"></div>
                     </div>
@@ -29,8 +29,8 @@
 
             {% for player in this.players %}
                 <tr>
-                    <td>{{ player.firstName }}</td>
-                    <td>{{ player.lastName }}</td>
+                    <td>{{ player.firstName | capitalize }}</td>
+                    <td>{{ player.lastName | upper }}</td>
                     <td>
                         <button class="btn btn-danger">
                             <i class="fa fa-trash"></i>

@@ -9,6 +9,7 @@ use App\Form\AddTeamType;
 use App\Repository\PlayerRepository;
 use App\Repository\TeamRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Attribute\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +17,12 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class HomeController extends AbstractController
 {
+    public function __construct(private readonly EntityManagerInterface $em)
+    {
+    }
+
     #[Route('/', name: 'app_home', methods: ['GET'])]
+    #[Template('home/index.html.twig')]
     public function index(TeamRepository $teamRepository, PlayerRepository $playerRepository): Response
     {
         $addTeamForm = $this->createForm(AddTeamType::class, new Team(), [
@@ -36,30 +42,34 @@ class HomeController extends AbstractController
     }
 
     #[Route('/team/add', name: 'app_add_team', methods: ['POST'])]
-    public function addTeam(Request $request, EntityManagerInterface $manager): Response
+    public function addTeam(Request $request): Response
     {
         $form = $this->createForm(AddTeamType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $team = $form->getData();
-            $manager->persist($team);
-            $manager->flush();
+            $this->em->persist($team);
+            $this->em->flush();
+
+            $this->addFlash('success', 'Team added successfully.');
         }
 
         return $this->redirectToRoute('app_home');
     }
 
     #[Route('/player/add', name: 'app_add_player', methods: ['POST'])]
-    public function addPlayer(Request $request, EntityManagerInterface $manager): Response
+    public function addPlayer(Request $request): Response
     {
         $form = $this->createForm(AddPlayerType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $player = $form->getData();
-            $manager->persist($player);
-            $manager->flush();
+            $this->em->persist($player);
+            $this->em->flush();
+
+            $this->addFlash('success', 'Player added successfully.');
         }
 
         return $this->redirectToRoute('app_home');

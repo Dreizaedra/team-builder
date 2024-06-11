@@ -52,7 +52,7 @@ class Player
 
     public function setFirstName(string $firstName): static
     {
-        $this->firstName = $firstName;
+        $this->firstName = strtolower($firstName);
 
         return $this;
     }
@@ -64,7 +64,7 @@ class Player
 
     public function setLastName(string $lastName): static
     {
-        $this->lastName = $lastName;
+        $this->lastName = strtolower($lastName);
 
         return $this;
     }

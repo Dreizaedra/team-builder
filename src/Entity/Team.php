@@ -48,7 +48,7 @@ class Team
 
     public function setName(string $name): static
     {
-        $this->name = $name;
+        $this->name = strtolower($name);
 
         return $this;
     }

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Player;
 use App\Entity\Team;
+use App\Repository\TeamRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -13,6 +14,10 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class AddPlayerType extends AbstractType
 {
+    public function __construct(private readonly TeamRepository $teamRepository)
+    {
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -39,11 +44,14 @@ class AddPlayerType extends AbstractType
             ->add('teams', EntityType::class, [
                 'class' => Team::class,
                 'required' => false,
-                'choice_label' => 'name',
+                'choices' => array_merge([new Team()], $this->teamRepository->findAll()),
+                'choice_label' => static function (?Team $team) {
+                    return is_null($team->getId()) ? 'Pas d\'équipe' : $team->getName();
+                },
+                'choice_value' => static function (?Team $team) {
+                    return is_null($team) ? null : $team->getName();
+                },
                 'autocomplete' => true,
-                'attr' => [
-                    'placeholder' => 'Pas d\'équipe',
-                ],
                 'multiple' => true,
             ])
         ;
