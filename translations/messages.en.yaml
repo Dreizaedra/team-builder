@@ -1,0 +1,24 @@
+app:
+  forms:
+    add_team:
+      team: Team
+    add_player:
+      first_name: First name
+      last_name: Last name
+      team: No team
+
+  tables:
+    columns:
+      first_name: First name
+      last_name: Last name
+      action: Action
+
+  flash:
+    success:
+      add_team: Team added successfully.
+      add_player: Player added successfully.
+
+  user:
+    login: Login
+    logout: Logout
+    welcome: Welcome %name%

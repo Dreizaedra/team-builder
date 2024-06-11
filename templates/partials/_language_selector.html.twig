@@ -1,0 +1,6 @@
+{{ form_start(languageForm, {attr: {'data-controller': 'lang', 'data-lang-target': 'form'}}) }}
+    {{ form_widget(languageForm.preferredLanguage, {attr: {
+        class: "form-select",
+        'data-action': 'lang#submit'
+    }}) }}
+{{ form_end(languageForm) }}

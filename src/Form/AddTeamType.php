@@ -18,7 +18,7 @@ class AddTeamType extends AbstractType
                 'label' => false,
                 'required' => true,
                 'attr' => [
-                    'placeholder' => 'Equipe',
+                    'placeholder' => 'app.forms.add_team.team',
                 ],
                 'constraints' => [
                     new NotBlank(),

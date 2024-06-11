@@ -1,0 +1,24 @@
+app:
+  forms:
+    add_team:
+      team: Equipe
+    add_player:
+      first_name: Prénom
+      last_name: Nom
+      team: Pas d'équipe
+
+  tables:
+    columns:
+      first_name: Prénom
+      last_name: Nom
+      action: Action
+
+  flash:
+    success:
+      add_team: Team ajoutée avec succès.
+      add_player: Joueur ajouté avec succès.
+
+  user:
+    login: Se connecter
+    logout: Se déconnecter
+    welcome: Bienvenue %name%

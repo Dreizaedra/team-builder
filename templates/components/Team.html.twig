@@ -22,9 +22,9 @@
 
         {% if this.players | length > 0 %}
             <tr>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Action</th>
+                <th>{{ 'app.tables.columns.first_name' | trans }}</th>
+                <th>{{ 'app.tables.columns.last_name' | trans }}</th>
+                <th>{{ 'app.tables.columns.action' | trans }}</th>
             </tr>
 
             {% for player in this.players %}

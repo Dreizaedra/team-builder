@@ -14,10 +14,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class HomeController extends AbstractController
 {
-    public function __construct(private readonly EntityManagerInterface $em)
+    public function __construct(private readonly EntityManagerInterface $em, private readonly TranslatorInterface $translator)
     {
     }
 
@@ -52,7 +53,7 @@ class HomeController extends AbstractController
             $this->em->persist($team);
             $this->em->flush();
 
-            $this->addFlash('success', 'Team added successfully.');
+            $this->addFlash('success', $this->translator->trans('app.flash.success.add_team'));
         }
 
         return $this->redirectToRoute('app_home');
@@ -69,7 +70,7 @@ class HomeController extends AbstractController
             $this->em->persist($player);
             $this->em->flush();
 
-            $this->addFlash('success', 'Player added successfully.');
+            $this->addFlash('success', $this->translator->trans('app.flash.success.add_player'));
         }
 
         return $this->redirectToRoute('app_home');

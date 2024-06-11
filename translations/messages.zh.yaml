@@ -1,0 +1,24 @@
+app:
+  forms:
+    add_team:
+      team: 队伍
+    add_player:
+      first_name: 名字
+      last_name: 姓氏
+      team: 无队伍
+
+  tables:
+    columns:
+      first_name: 名字
+      last_name: 姓氏
+      action: 操作
+
+  flash:
+    success:
+      add_team: 队伍添加成功。
+      add_player: 玩家添加成功。
+
+  user:
+    login: 登录
+    logout: 退出
+    welcome: 欢迎 %name%

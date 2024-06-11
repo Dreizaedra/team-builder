@@ -34,11 +34,31 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
+        <div class="container d-flex">
 
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ path('app_home') }}">
                 <i class="fa-solid fa-users me-4"></i>
-                Team Builder</a>
+                Team Builder
+            </a>
+
+            {% if app.user is not null %}
+                <div class="text-white">
+                    {{ 'app.user.welcome' | trans({ '%name%': app.user.username | capitalize }) }}
+                </div>
+
+                <div class="d-flex gap-2">
+                    {{ render(controller('App\\Controller\\LanguageController::getLanguageSelector')) }}
+
+                    <a href="{{ path('app_logout') }}" class="btn btn-danger">
+                        {{ 'app.user.logout' | trans }}
+                    </a>
+                </div>
+            {% else %}
+                <a href="{{ path('app_login') }}" class="btn btn-primary">
+                    {{ 'app.user.login' | trans }}
+                </a>
+            {% endif %}
+
         </div>
     </nav>
 

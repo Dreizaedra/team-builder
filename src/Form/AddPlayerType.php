@@ -25,7 +25,7 @@ class AddPlayerType extends AbstractType
                 'label' => false,
                 'required' => true,
                 'attr' => [
-                    'placeholder' => 'Prénom',
+                    'placeholder' => 'app.forms.add_player.first_name',
                 ],
                 'constraints' => [
                     new NotBlank(),
@@ -35,7 +35,7 @@ class AddPlayerType extends AbstractType
                 'label' => false,
                 'required' => true,
                 'attr' => [
-                    'placeholder' => 'Nom',
+                    'placeholder' => 'app.forms.add_player.last_name',
                 ],
                 'constraints' => [
                     new NotBlank(),
@@ -45,12 +45,15 @@ class AddPlayerType extends AbstractType
                 'class' => Team::class,
                 'required' => false,
                 'choices' => array_merge([new Team()], $this->teamRepository->findAll()),
-                'choice_label' => static function (?Team $team) {
-                    return is_null($team->getId()) ? 'Pas d\'équipe' : ucwords($team->getName());
+                'choice_label' => static function (Team $team) {
+                    return ucwords($team->getName());
                 },
                 'choice_value' => static function (?Team $team) {
                     return is_null($team) ? null : $team->getId();
                 },
+                'attr' => [
+                    'placeholder' => 'app.forms.add_player.team',
+                ],
                 'autocomplete' => true,
                 'multiple' => true,
             ])
