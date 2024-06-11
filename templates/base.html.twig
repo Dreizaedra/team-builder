@@ -43,7 +43,7 @@
     </nav>
 
     {% for message in app.flashes('success') %}
-        <div class="alert alert-success container text-center mt-2">
+        <div class="alert alert-success container text-center" {{ stimulus_controller('flash') }} {{ stimulus_target('flash', 'flash') }}>
             {{ message }}
         </div>
     {% endfor %}
@@ -53,7 +53,7 @@
     <footer class="py-5 bg-dark">
         <div class="container px-4 px-lg-5">
             <p class="m-0 text-center text-white">
-                Copyright &copy; Seven Valley 2023
+                Copyright &copy; Seven Valley 2023 - {{ 'now' | date('Y') }}
             </p>
         </div>
     </footer>
