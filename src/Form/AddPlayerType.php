@@ -46,10 +46,10 @@ class AddPlayerType extends AbstractType
                 'required' => false,
                 'choices' => array_merge([new Team()], $this->teamRepository->findAll()),
                 'choice_label' => static function (?Team $team) {
-                    return is_null($team->getId()) ? 'Pas d\'équipe' : $team->getName();
+                    return is_null($team->getId()) ? 'Pas d\'équipe' : ucwords($team->getName());
                 },
                 'choice_value' => static function (?Team $team) {
-                    return is_null($team) ? null : $team->getName();
+                    return is_null($team) ? null : $team->getId();
                 },
                 'autocomplete' => true,
                 'multiple' => true,
