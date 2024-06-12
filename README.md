@@ -13,7 +13,7 @@ Then create your dev environment :
 ```bash
 symfony console doctrine:database:create
 symfony console doctrine:migrations:migrate --no-interaction
-symfony console doctrine:fixtures:load
+symfony console doctrine:fixtures:load --no-interaction
 ```
 
 Finally, run it and go to http://localhost:8000/ :
