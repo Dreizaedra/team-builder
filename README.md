@@ -16,7 +16,7 @@ symfony console doctrine:migrations:migrate --no-interaction
 symfony console doctrine:fixtures:load
 ```
 
-And finally run it :
+Finally, run it and go to `http://localhost:8000/`:
 ```bash
 symfony server:start
 ```
