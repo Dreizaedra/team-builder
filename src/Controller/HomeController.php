@@ -24,7 +24,7 @@ class HomeController extends AbstractController
 
     #[Route('/', name: 'app_home', methods: ['GET'])]
     #[Template('home/index.html.twig')]
-    public function index(TeamRepository $teamRepository, PlayerRepository $playerRepository): Response
+    public function index(TeamRepository $teamRepository): Response
     {
         $addTeamForm = $this->createForm(AddTeamType::class, new Team(), [
             'action' => $this->generateUrl('app_add_team'),
@@ -36,7 +36,6 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'teams' => $teamRepository->findWithPlayers(),
-            'playersWithNoTeam' => $playerRepository->findWithNoTeam(),
             'addTeamForm' => $addTeamForm,
             'addPlayerForm' => $addPlayerForm,
         ]);

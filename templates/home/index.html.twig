@@ -22,7 +22,7 @@
                 </div>
                 <div class="equipe">
                     {% for team in teams %}
-                        {{ component('Team', {name: team.name, players: team.players}) }}
+                        {{ component('Team', {'team': team }) }}
                     {% endfor %}
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="mt-3 pt-2">
-                    {{ component('Team', {players: playersWithNoTeam}) }}
+                    {{ component('Team') }}
                 </div>
             </div>
             <!-- col4 -->

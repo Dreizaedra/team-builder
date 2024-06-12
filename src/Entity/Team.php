@@ -28,7 +28,7 @@ class Team
     /**
      * @var Collection<int, Player>
      */
-    #[ORM\ManyToMany(targetEntity: Player::class, mappedBy: 'teams')]
+    #[ORM\ManyToMany(targetEntity: Player::class, mappedBy: 'teams', cascade: ['persist'])]
     private Collection $players;
 
     public function __construct()
