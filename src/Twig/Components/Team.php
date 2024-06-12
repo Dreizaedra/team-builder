@@ -60,6 +60,7 @@ final class Team
             $this->em->remove($player);
         } else {
             $player->removeTeam($this->team);
+            $this->em->persist($player);
         }
 
         $this->em->flush();
