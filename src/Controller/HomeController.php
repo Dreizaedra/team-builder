@@ -6,7 +6,6 @@ use App\Entity\Player;
 use App\Entity\Team;
 use App\Form\AddPlayerType;
 use App\Form\AddTeamType;
-use App\Repository\PlayerRepository;
 use App\Repository\TeamRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Attribute\Template;
