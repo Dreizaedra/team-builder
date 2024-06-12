@@ -1,5 +1,10 @@
 # How to run
-First step is to set up your database docker container :
+First step is to get the dependencies :
+```bash
+composer install
+```
+
+Then set up your database docker container :
 ```bash
 docker compose up -d
 ```
