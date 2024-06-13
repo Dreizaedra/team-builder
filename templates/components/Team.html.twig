@@ -1,6 +1,6 @@
 <div {{ attributes }}>
-    <table class="table table-striped mt-4">
-        <tbody>
+    <table class="table table-striped mt-4" {{ stimulus_controller('sortable') }}>
+        <tbody {{ stimulus_target('sortable', 'dropzone') }}>
 
         {% if this.team is not null and this.team.id is not null %}
             <tr>
@@ -34,7 +34,7 @@
             </tr>
 
             {% for player in players %}
-                <tr>
+                <tr {{ stimulus_target('sortable', 'draggable') }} draggable="true" id="{{ 'player-' ~ player.id }}">
                     <td>{{ player.firstName | capitalize }}</td>
                     <td>{{ player.lastName | upper }}</td>
                     <td>
@@ -50,6 +50,7 @@
                 </tr>
             {% endfor %}
         {% endif %}
+
         </tbody>
     </table>
 </div>
