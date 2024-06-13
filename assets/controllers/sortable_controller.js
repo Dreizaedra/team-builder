@@ -51,7 +51,9 @@ export default class extends Controller {
         ev.preventDefault();
 
         const draggableElement = document.getElementById(ev.dataTransfer.getData('text/plain'));
-        console.log(ev.target);
-        ev.target.appendChild(draggableElement);
+        const targetBody = ev.target.closest('tbody');
+        if (targetBody) {
+            targetBody.appendChild(draggableElement);
+        }
     }
 }
